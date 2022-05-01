@@ -2,8 +2,11 @@ package com.benchmark.benchmarkapp;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class StartPage {
     @FXML
@@ -15,7 +18,7 @@ public class StartPage {
     }
 
     public void exitApplication(){
-        System.out.println("Exit button pressed");
+        javafx.application.Platform.exit();
     }
     public void pressNext1() throws IOException {
         Main m= new Main();
