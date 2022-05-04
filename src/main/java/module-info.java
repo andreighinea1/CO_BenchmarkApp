@@ -9,6 +9,9 @@ module com.benchmark.benchmarkapp {
     // Other
     requires javafx.swing;
 
+    // Filters
+    requires com.jhlabs;
+
     exports com.benchmark.benchmarkapp.image_functions;
     opens com.benchmark.benchmarkapp.image_functions to javafx.fxml;
     exports com.benchmark.benchmarkapp.pages;

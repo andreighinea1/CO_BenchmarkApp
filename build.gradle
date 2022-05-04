@@ -38,6 +38,9 @@ dependencies {
     implementation('org.controlsfx:controlsfx:11.1.0')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
 
+    // Filters
+    implementation project('filters')
+
     // JUnit
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

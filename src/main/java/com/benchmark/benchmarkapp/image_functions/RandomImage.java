@@ -4,13 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
-
 import javax.imageio.ImageIO;
 
 public class RandomImage {
-    public static Image getRandomImage(int width, int height) {
+    public static BufferedImage getRandomImage(int width, int height) {
         // Create buffered image object
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
@@ -31,13 +28,13 @@ public class RandomImage {
         }
 
         // write image
-        try {
-            File f = new File("D:/test.png");
-            ImageIO.write(img, "png", f);
-        } catch (IOException e) {
-            System.out.println("Error: " + e);
-        }
+//        try {
+//            File f = new File("D:/test.png");
+//            ImageIO.write(img, "png", f);
+//        } catch (IOException e) {
+//            System.out.println("Error: " + e);
+//        }
 
-        return SwingFXUtils.toFXImage(img, null);
+        return img;
     }
 }
