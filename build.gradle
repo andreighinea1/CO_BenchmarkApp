@@ -25,18 +25,20 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'com.benchmark.benchmarkapp'
-    mainClass = 'com.benchmark.benchmarkapp.HelloApplication'
+    mainClass = 'com.benchmark.benchmarkapp.Main'
 }
 
 javafx {
     version = '17.0.1'
-    modules = ['javafx.controls', 'javafx.fxml']
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.swing']
 }
 
 dependencies {
+    // JavaFX
     implementation('org.controlsfx:controlsfx:11.1.0')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
 
+    // JUnit
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #E9E4CC;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.benchmark.benchmarkapp.Page3">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #E9E4CC;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.benchmark.benchmarkapp.pages.Page3">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="282.0" prefWidth="842.0">
             <children>
@@ -22,8 +22,8 @@
                         <Font name="Lucida Calligraphy Italic" size="23.0" />
                     </font>
                 </Label>
-                <ImageView fx:id="image1" fitHeight="150.0" fitWidth="200.0" layoutX="95.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true" />
-                <ImageView fx:id="image2" fitHeight="150.0" fitWidth="200.0" layoutX="559.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="imageView1" fitHeight="150.0" fitWidth="200.0" layoutX="95.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="imageView2" fitHeight="150.0" fitWidth="200.0" layoutX="559.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" />
             </children></AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
             <children>
@@ -42,12 +42,12 @@
                         <Font size="23.0" />
                     </font>
                 </Label>
-                <Button fx:id="back" layoutX="21.0" layoutY="282.0" mnemonicParsing="false" onAction="#backToStartpage" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #57433A;" text="BACK" textFill="#e9e4cc">
+                <Button fx:id="back" layoutX="21.0" layoutY="282.0" mnemonicParsing="false" onAction="#backToStartpage" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #57433A;" text="Reset" textFill="#e9e4cc">
                     <font>
                         <Font name="Lucida Calligraphy Italic" size="15.0" />
                     </font>
                 </Button>
-            <Button fx:id="exit" layoutX="671.0" layoutY="282.0" mnemonicParsing="false" onAction="#exitApplication" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #57433A;" text="EXIT" textFill="#e9e4cc">
+            <Button fx:id="exit" layoutX="671.0" layoutY="282.0" mnemonicParsing="false" onAction="#exitApplication" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #57433A;" text="Exit" textFill="#e9e4cc">
                <font>
                   <Font name="Lucida Calligraphy Italic" size="15.0" />
                </font>

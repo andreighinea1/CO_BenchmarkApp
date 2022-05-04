@@ -1,5 +1,7 @@
-package com.benchmark.benchmarkapp;
+package com.benchmark.benchmarkapp.pages;
 
+import com.benchmark.benchmarkapp.Main;
+import com.benchmark.benchmarkapp.data_passing.DataHolder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,8 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -18,9 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Page2 implements Initializable {
-
-    public Page2(){
+public class Page2 {
+    public Page2() {
     }
 
     List<String> firstFile;
@@ -37,7 +36,7 @@ public class Page2 implements Initializable {
     @FXML
     private ChoiceBox<String> resolution;
 
-    private String[] resolutions={"resolution1","resolution2","resolution3","resolution4"};
+    private String[] resolutions = {"512x512", "1024x1024", "2048x2048", "4096x4096", "8192x8192"};
 
     @FXML
     private CheckBox filter1;
@@ -55,20 +54,19 @@ public class Page2 implements Initializable {
     private Button start;
 
     @FXML
-    void uploadChoosenImage(ActionEvent event){
-        FileChooser fc= new FileChooser();
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images",firstFile));
-        File f= fc.showOpenDialog(null);
+    void uploadChoosenImage(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", firstFile));
+        File f = fc.showOpenDialog(null);
 
 
-        if(f!=null){
+        if (f != null) {
             labSingleFile.setText("Selected File:" + f.getAbsolutePath());
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        firstFile= new ArrayList<>();
+    public void initialize() {
+        firstFile = new ArrayList<>();
         firstFile.add("*.jpg");
         firstFile.add("*.png");
         firstFile.add("*.jpeg");
@@ -76,12 +74,17 @@ public class Page2 implements Initializable {
     }
 
     public void backToStartPage() throws IOException {
-        Main m= new Main();
+        Main m = new Main();
         m.changeScene("StartPage.fxml");
     }
 
     public void moveToPage3() throws IOException {
-        Main m= new Main();
+        if (resolution.getValue() == null)
+            return;
+
+        DataHolder.getInstance().setResolution(resolution.getValue());
+
+        Main m = new Main();
         m.changeScene("Page3.fxml");
     }
 }

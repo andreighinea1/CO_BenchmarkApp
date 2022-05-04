@@ -13,20 +13,20 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        stg=primaryStage;
+        stg = primaryStage;
         primaryStage.setResizable(false);
-        Parent root =FXMLLoader.load(getClass().getResource("StartPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StartPage.fxml"));
         primaryStage.setTitle("Image Processing Benchmark");
-        primaryStage.setScene(new Scene(root,900,650));
+        primaryStage.setScene(new Scene(root, 900, 650));
         primaryStage.show();
     }
 
-    public void changeScene(String fxml) throws IOException{
-        Parent pane=FXMLLoader.load(getClass().getResource(fxml));
+    public void changeScene(String fxml) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         launch(args);
     }
 }
