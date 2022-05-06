@@ -2,25 +2,23 @@ package com.benchmark.benchmarkapp.pages;
 
 import com.benchmark.benchmarkapp.Main;
 import com.benchmark.benchmarkapp.data_passing.DataHolder;
+import com.jhlabs.image.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class Page2 {
-    public Page2() {
-    }
+    private DataHolder instance;
 
     List<String> firstFile;
 
@@ -39,19 +37,44 @@ public class Page2 {
     private String[] resolutions = {"512x512", "1024x1024", "2048x2048", "4096x4096", "8192x8192"};
 
     @FXML
-    private CheckBox filter1;
+    private CheckBox grayscaleFilter;
 
     @FXML
-    private CheckBox filter2;
+    private CheckBox gainFilter;
 
     @FXML
-    private CheckBox filter3;
+    private CheckBox thresholdFilter;
 
     @FXML
-    private CheckBox filter4;
+    private CheckBox contrastFilter;
+
+    @FXML
+    private CheckBox exposureFilter;
+
+    @FXML
+    private CheckBox rescaleFilter;
+
+    @FXML
+    private CheckBox invertFilter;
+
+    @FXML
+    private CheckBox solarizeFilter;
 
     @FXML
     private Button start;
+
+    public Page2() {
+    }
+
+    public void initialize() {
+        instance = DataHolder.getInstance();
+
+        firstFile = new ArrayList<>();
+        firstFile.add("*.jpg");
+        firstFile.add("*.png");
+        firstFile.add("*.jpeg");
+        resolution.getItems().addAll(resolutions);
+    }
 
     @FXML
     void uploadChoosenImage(ActionEvent event) {
@@ -59,18 +82,15 @@ public class Page2 {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", firstFile));
         File f = fc.showOpenDialog(null);
 
-
         if (f != null) {
             labSingleFile.setText("Selected File:" + f.getAbsolutePath());
-        }
-    }
 
-    public void initialize() {
-        firstFile = new ArrayList<>();
-        firstFile.add("*.jpg");
-        firstFile.add("*.png");
-        firstFile.add("*.jpeg");
-        resolution.getItems().addAll(resolutions);
+            try {
+                instance.setUploadedImage(ImageIO.read(f));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void backToStartPage() throws IOException {
@@ -82,7 +102,23 @@ public class Page2 {
         if (resolution.getValue() == null)
             return;
 
-        DataHolder.getInstance().setResolution(resolution.getValue());
+        instance.setResolution(resolution.getValue());
+        if (grayscaleFilter.isSelected())
+            instance.addFilter(new GrayscaleFilter());
+        if (gainFilter.isSelected())
+            instance.addFilter(new GainFilter());
+        if (thresholdFilter.isSelected())
+            instance.addFilter(new ThresholdFilter());
+        if (contrastFilter.isSelected())
+            instance.addFilter(new ContrastFilter());
+        if (exposureFilter.isSelected())
+            instance.addFilter(new ExposureFilter());
+        if (rescaleFilter.isSelected())
+            instance.addFilter(new RescaleFilter());
+        if (invertFilter.isSelected())
+            instance.addFilter(new InvertFilter());
+        if (solarizeFilter.isSelected())
+            instance.addFilter(new SolarizeFilter());
 
         Main m = new Main();
         m.changeScene("Page3.fxml");
