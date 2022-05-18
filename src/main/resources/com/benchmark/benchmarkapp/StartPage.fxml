@@ -38,7 +38,7 @@
                         <Font name="Lucida Calligraphy Italic" size="19.0" />
                      </font>
                   </Button>
-                  <Label layoutX="26.0" layoutY="161.0" prefHeight="313.0" prefWidth="521.0" text="This application generates 1000 photos in order to test the CPU performance. The user is able to upload a image, select the resolution and the filters he/she desires to be applied on the uploaded photo." textFill="#e9e4d1" wrapText="true">
+                  <Label layoutX="26.0" layoutY="161.0" prefHeight="313.0" prefWidth="521.0" text="This application generates photos in order to test the CPU performance. The user is able to upload an image, select the resolution , filters and number of images she/he wants to test." textFill="#e9e4d1" wrapText="true">
                      <font>
                         <Font name="Lucida Calligraphy Italic" size="25.0" />
                      </font>

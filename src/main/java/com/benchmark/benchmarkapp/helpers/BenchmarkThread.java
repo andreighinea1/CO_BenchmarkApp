@@ -3,6 +3,7 @@ package com.benchmark.benchmarkapp.helpers;
 import com.benchmark.benchmarkapp.Main;
 import com.benchmark.benchmarkapp.data_passing.DataHolder;
 import com.benchmark.benchmarkapp.data_passing.Resolution;
+import javafx.scene.chart.PieChart;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class BenchmarkThread extends Thread {
         }
         endBench();
 
+        DataHolder.getInstance().setTime(endTime);
         DataHolder.getInstance().setScore(getScore(endTime));
 
         Main m = new Main();

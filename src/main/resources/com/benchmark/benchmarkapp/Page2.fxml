@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #57433a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.benchmark.benchmarkapp.pages.Page2">
+<AnchorPane prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #57433a;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.benchmark.benchmarkapp.pages.Page2">
    <children>
       <CheckBox fx:id="contrastFilter" layoutX="474.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #E9E4D1;" text="Contrast" textFill="#57433a">
          <font>
@@ -29,7 +34,7 @@
                   <Image url="@Img/UploadIcon.png" />
                </image>
             </ImageView>
-            <Button fx:id="uploadImage" layoutX="79.0" layoutY="242.0" mnemonicParsing="false" onAction="#uploadChoosenImage" prefHeight="134.0" prefWidth="132.0" style="-fx-background-color: 0; -fx-border-color: #57433A;" />
+            <Button fx:id="uploadImage" layoutX="79.0" layoutY="242.0" mnemonicParsing="false" onAction="#uploadChoosenImage" prefHeight="134.0" prefWidth="132.0" style="-fx-background-color: transparent; -fx-border-color: #57433A;" />
             <Label fx:id="labSingleFile" layoutX="11.0" layoutY="450.0" prefHeight="46.0" prefWidth="282.0" style="-fx-text-fill: #57433A;">
                <font>
                   <Font name="Lucida Calligraphy Italic" size="11.0" />
@@ -44,7 +49,7 @@
       </AnchorPane>
       <AnchorPane layoutX="596.0" layoutY="-2.0" prefHeight="662.0" prefWidth="306.0" style="-fx-background-color: #E9E4D1;">
          <children>
-            <Label layoutX="31.0" layoutY="82.0" prefHeight="55.0" prefWidth="243.0" style="-fx-text-fill: #57433A;" text="Step4: Press Start">
+            <Label layoutX="31.0" layoutY="82.0" prefHeight="55.0" prefWidth="243.0" style="-fx-text-fill: #57433A;" text="Step5: Press Start">
                <font>
                   <Font name="Lucida Calligraphy Italic" size="19.0" />
                </font>
@@ -133,9 +138,15 @@
             <Insets left="5.0" />
          </padding>
       </CheckBox>
-      <Label layoutX="324.0" layoutY="444.0" prefHeight="55.0" prefWidth="255.0" style="-fx-text-fill: #E9E4D1;" text="Step 4: Choose Size">
+      <Label alignment="CENTER" layoutX="324.0" layoutY="444.0" prefHeight="79.0" prefWidth="255.0" style="-fx-text-fill: #E9E4D1;" text="Step 4: Choose number of images " wrapText="true">
          <font>
             <Font name="Lucida Calligraphy Italic" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="numberField" layoutX="376.0" layoutY="539.0" style="-fx-background-color: #E9E4D1;" />
+      <Label fx:id="wrongInput" alignment="CENTER" layoutX="299.0" layoutY="581.0" prefHeight="55.0" prefWidth="291.0" textFill="#e9e4d1" wrapText="true">
+         <font>
+            <Font name="Lucida Calligraphy Italic" size="12.0" />
          </font>
       </Label>
    </children>

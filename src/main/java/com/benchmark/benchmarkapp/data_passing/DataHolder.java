@@ -13,6 +13,7 @@ public final class DataHolder {
     private BufferedImage uploadedImage;
     private int score;
     private int imageCount;
+    private double time;
 
     private final static DataHolder INSTANCE = new DataHolder();
 
@@ -54,6 +55,7 @@ public final class DataHolder {
         filters = new ArrayList<>();
         resolution = null;
         uploadedImage = null;
+        time=0;
     }
 
     public BufferedImage getUploadedImage() {
@@ -78,5 +80,13 @@ public final class DataHolder {
 
     public void setImageCount(int imageCount) {
         this.imageCount = imageCount;
+    }
+
+    public void setTime(double time) {
+        this.time = time;
+    }
+
+    public double getTime() {
+        return time;
     }
 }

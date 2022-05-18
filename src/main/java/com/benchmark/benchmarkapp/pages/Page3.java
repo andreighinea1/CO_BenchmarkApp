@@ -28,6 +28,9 @@ public class Page3 {
     @FXML
     private ImageView imageView2;
 
+    @FXML
+    private Label timeAndSize;
+
     public Page3() {
     }
 
@@ -35,6 +38,7 @@ public class Page3 {
         instance = DataHolder.getInstance();
 
         scoreText.setText("The score is: " + instance.getScore());
+        timeAndSize.setText(String.valueOf(instance.getImageCount()) + " images were processed in " + instance.getTime()/1000000000 + " seconds");
 
 //        Resolution res = instance.getResolution();
 //        BufferedImage img = getRandomImage(res.width(), res.height());

@@ -5,10 +5,7 @@ import com.benchmark.benchmarkapp.data_passing.DataHolder;
 import com.jhlabs.image.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
@@ -63,6 +60,12 @@ public class Page2 {
     @FXML
     private Button start;
 
+    @FXML
+    private TextField numberField;
+
+    @FXML
+    private Label wrongInput;
+
     public Page2() {
     }
 
@@ -99,30 +102,81 @@ public class Page2 {
     }
 
     public void moveToPage3() {
-        if (resolution.getValue() == null)
-            return;
 
-        instance.setResolution(resolution.getValue());
-        if (grayscaleFilter.isSelected())
+        boolean validResolution=false;
+        boolean validFilter=false;
+        boolean validSize=false;
+
+        if (resolution.getValue() == null) {
+            wrongInput.setText("Please select a resolution!");
+        }
+        else {
+            validResolution=true;
+            instance.setResolution(resolution.getValue());
+        }
+
+        if (grayscaleFilter.isSelected()) {
             instance.addFilter(new GrayscaleFilter());
-        if (gainFilter.isSelected())
+            validFilter=true;
+        }
+        if (gainFilter.isSelected()) {
             instance.addFilter(new GainFilter());
-        if (thresholdFilter.isSelected())
+            validFilter=true;
+        }
+        if (thresholdFilter.isSelected()) {
             instance.addFilter(new ThresholdFilter());
-        if (contrastFilter.isSelected())
+            validFilter=true;
+        }
+        if (contrastFilter.isSelected()) {
             instance.addFilter(new ContrastFilter());
-        if (exposureFilter.isSelected())
+            validFilter=true;
+        }
+        if (exposureFilter.isSelected()) {
             instance.addFilter(new ExposureFilter());
-        if (rescaleFilter.isSelected())
+            validFilter=true;
+        }
+        if (rescaleFilter.isSelected()) {
             instance.addFilter(new RescaleFilter());
-        if (invertFilter.isSelected())
+            validFilter=true;
+        }
+        if (invertFilter.isSelected()) {
             instance.addFilter(new InvertFilter());
-        if (solarizeFilter.isSelected())
+            validFilter=true;
+        }
+        if (solarizeFilter.isSelected()) {
             instance.addFilter(new SolarizeFilter());
+            validFilter=true;
+        }
 
-        instance.setImageCount(100); // Here place something inputted from the GUI instead of the number
+        if(validFilter==false){
+            wrongInput.setText("Please select at least a filter!");
+        }
 
-        Main m = new Main();
-        m.changeScene("LoadingPage.fxml");
+        // handle the number of images tested
+
+        if(numberField.getText().isEmpty()){
+            wrongInput.setText("Please give a number at Step4!");
+        }
+        else {
+            int numberOfImages;
+
+            try {
+                numberOfImages=Integer.parseInt(numberField.getText());
+                if(numberOfImages<50 || numberOfImages>1000){
+                    wrongInput.setText("Please give a number between 50 and 1000 at Step4!");
+                }
+                else{
+                    validSize=true;
+                    instance.setImageCount(numberOfImages);
+                }
+            } catch (NumberFormatException e) {
+                wrongInput.setText("Please give a number at Step4, not text!");
+            }
+        }
+
+        if(validFilter && validSize && validResolution) {
+            Main m = new Main();
+            m.changeScene("LoadingPage.fxml");
+        }
     }
 }
