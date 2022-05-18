@@ -37,8 +37,8 @@ public class BenchmarkThread extends Thread {
         }
     }
 
-    public int getScore(double time, long value) {
-        return (int) ((value + 5 * instance.getFilterCount()) / time * res.pixelCount() * 1000000);
+    public int getScore(double time) {
+        return (int) ((instance.getImageCount() + 5 * instance.getFilterCount()) / time * res.pixelCount() * 1000000);
     }
 
     ArrayList<BufferedImage> images = new ArrayList<>();
@@ -52,7 +52,7 @@ public class BenchmarkThread extends Thread {
         }
         endBench();
 
-        DataHolder.getInstance().setScore(getScore(endTime, imageCount));
+        DataHolder.getInstance().setScore(getScore(endTime));
 
         Main m = new Main();
         m.changeScene("Page3.fxml");
