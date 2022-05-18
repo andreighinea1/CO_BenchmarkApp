@@ -133,7 +133,7 @@
             <Insets left="5.0" />
          </padding>
       </CheckBox>
-      <Label layoutX="324.0" layoutY="444.0" prefHeight="55.0" prefWidth="255.0" style="-fx-text-fill: #E9E4D1;" text="Step 4: Choose Photos">
+      <Label layoutX="324.0" layoutY="444.0" prefHeight="55.0" prefWidth="255.0" style="-fx-text-fill: #E9E4D1;" text="Step 4: Choose Size">
          <font>
             <Font name="Lucida Calligraphy Italic" size="19.0" />
          </font>

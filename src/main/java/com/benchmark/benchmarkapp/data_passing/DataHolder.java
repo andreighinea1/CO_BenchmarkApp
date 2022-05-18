@@ -34,6 +34,11 @@ public final class DataHolder {
         return resolution;
     }
 
+
+    public int getFilterCount() {
+        return filters.size();
+    }
+
     public void addFilter(PointFilter filter) {
         filters.add(filter);
     }
@@ -43,6 +48,7 @@ public final class DataHolder {
             filter.filter(img, img);
         return img;
     }
+
 
     public void resetData() {
         filters = new ArrayList<>();

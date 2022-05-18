@@ -13,7 +13,7 @@
             <Image url="@Img/loading.gif" />
          </image>
       </ImageView>
-      <Label layoutX="363.0" layoutY="98.0" text="Loading..." textFill="#57433a">
+      <Label layoutX="302.0" layoutY="106.0" text="Benchmarking..." textFill="#57433a">
          <font>
             <Font name="Lucida Calligraphy Italic" size="34.0" />
          </font>

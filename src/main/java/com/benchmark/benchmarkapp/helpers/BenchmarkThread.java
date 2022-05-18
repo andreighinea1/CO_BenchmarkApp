@@ -12,6 +12,14 @@ public class BenchmarkThread extends Thread {
     private double endTime;
     private boolean startedBench = false;
 
+    private final DataHolder instance;
+    private final Resolution res;
+
+    public BenchmarkThread() {
+        instance = DataHolder.getInstance();
+        res = instance.getResolution();
+    }
+
     public void startBench() {
         System.out.println("Bench STARTED");
         startedBench = true;
@@ -30,14 +38,12 @@ public class BenchmarkThread extends Thread {
     }
 
     public int getScore(double time, long value) {
-        return (int) (value / time * 100000000000L);
+        return (int) ((value + 5 * instance.getFilterCount()) / time * res.pixelCount() * 1000000);
     }
 
     ArrayList<BufferedImage> images = new ArrayList<>();
 
     public void run() {
-        DataHolder instance = DataHolder.getInstance();
-        Resolution res = instance.getResolution();
         int imageCount = instance.getImageCount();
 
         startBench();
