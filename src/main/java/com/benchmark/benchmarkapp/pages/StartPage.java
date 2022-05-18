@@ -27,7 +27,7 @@ public class StartPage {
         javafx.application.Platform.exit();
     }
 
-    public void pressNext1() throws IOException {
+    public void pressNext1() {
         Main m = new Main();
         m.changeScene("Page2.fxml");
     }

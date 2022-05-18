@@ -93,12 +93,12 @@ public class Page2 {
         }
     }
 
-    public void backToStartPage() throws IOException {
+    public void backToStartPage() {
         Main m = new Main();
         m.changeScene("StartPage.fxml");
     }
 
-    public void moveToPage3() throws IOException {
+    public void moveToPage3() {
         if (resolution.getValue() == null)
             return;
 
@@ -120,7 +120,9 @@ public class Page2 {
         if (solarizeFilter.isSelected())
             instance.addFilter(new SolarizeFilter());
 
+        instance.setImageCount(100); // Here place something inputted from the GUI instead of the number
+
         Main m = new Main();
-        m.changeScene("Page3.fxml");
+        m.changeScene("LoadingPage.fxml");
     }
 }

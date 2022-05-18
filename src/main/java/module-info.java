@@ -12,8 +12,8 @@ module com.benchmark.benchmarkapp {
     // Filters
     requires com.jhlabs;
 
-    exports com.benchmark.benchmarkapp.image_functions;
-    opens com.benchmark.benchmarkapp.image_functions to javafx.fxml;
+    exports com.benchmark.benchmarkapp.helpers;
+    opens com.benchmark.benchmarkapp.helpers to javafx.fxml;
     exports com.benchmark.benchmarkapp.pages;
     opens com.benchmark.benchmarkapp.pages to javafx.fxml;
     exports com.benchmark.benchmarkapp;

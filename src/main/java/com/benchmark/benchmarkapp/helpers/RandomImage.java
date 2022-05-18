@@ -1,10 +1,6 @@
-package com.benchmark.benchmarkapp.image_functions;
+package com.benchmark.benchmarkapp.helpers;
 
-import java.io.File;
-import java.io.IOException;
 import java.awt.image.BufferedImage;
-
-import javax.imageio.ImageIO;
 
 public class RandomImage {
     public static BufferedImage getRandomImage(int width, int height) {

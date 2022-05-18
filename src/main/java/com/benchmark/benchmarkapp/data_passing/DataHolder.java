@@ -11,6 +11,8 @@ public final class DataHolder {
     private Resolution resolution;
     private ArrayList<PointFilter> filters = new ArrayList<>();
     private BufferedImage uploadedImage;
+    private int score;
+    private int imageCount;
 
     private final static DataHolder INSTANCE = new DataHolder();
 
@@ -54,5 +56,21 @@ public final class DataHolder {
 
     public void setUploadedImage(BufferedImage uploadedImage) {
         this.uploadedImage = uploadedImage;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getImageCount() {
+        return imageCount;
+    }
+
+    public void setImageCount(int imageCount) {
+        this.imageCount = imageCount;
     }
 }

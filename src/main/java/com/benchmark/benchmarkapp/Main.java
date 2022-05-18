@@ -16,13 +16,18 @@ public class Main extends Application {
         stg = primaryStage;
         primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("StartPage.fxml"));
-        primaryStage.setTitle("Image Processing Benchmark");
+        primaryStage.setTitle("Image Processing BenchmarkThread");
         primaryStage.setScene(new Scene(root, 900, 650));
         primaryStage.show();
     }
 
-    public void changeScene(String fxml) throws IOException {
-        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+    public void changeScene(String fxml) {
+        Parent pane = null;
+        try {
+            pane = FXMLLoader.load(getClass().getResource(fxml));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         stg.getScene().setRoot(pane);
     }
 

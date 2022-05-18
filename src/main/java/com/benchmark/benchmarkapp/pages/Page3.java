@@ -2,26 +2,23 @@ package com.benchmark.benchmarkapp.pages;
 
 import com.benchmark.benchmarkapp.Main;
 import com.benchmark.benchmarkapp.data_passing.DataHolder;
-import com.benchmark.benchmarkapp.data_passing.Resolution;
-
-import com.jhlabs.image.*;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import java.awt.image.BufferedImage;
-import java.io.Console;
-import java.io.IOException;
 
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import static com.benchmark.benchmarkapp.image_functions.RandomImage.getRandomImage;
 
 
 public class Page3 {
     private DataHolder instance;
+
+    @FXML
+    private Label scoreText;
     @FXML
     private Button back;
     @FXML
@@ -37,20 +34,24 @@ public class Page3 {
     public void initialize() {
         instance = DataHolder.getInstance();
 
+        scoreText.setText("The score is: " + instance.getScore());
+
 //        Resolution res = instance.getResolution();
 //        BufferedImage img = getRandomImage(res.width(), res.height());
         BufferedImage img = instance.getUploadedImage();
 
 
-        setImage1(SwingFXUtils.toFXImage(img, null));
-        setImage2(SwingFXUtils.toFXImage(instance.useFilters(img), null));
+        if(img != null) {
+            setImage1(SwingFXUtils.toFXImage(img, null));
+            setImage2(SwingFXUtils.toFXImage(instance.useFilters(img), null));
+        }
     }
 
     public void exitApplication() {
         javafx.application.Platform.exit();
     }
 
-    public void backToStartpage() throws IOException {
+    public void backToStartPage() {
         Main m = new Main();
         m.changeScene("StartPage.fxml");
     }
