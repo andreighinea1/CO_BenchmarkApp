@@ -1,8 +1,8 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
-    id 'org.beryx.jlink' version '2.24.1'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.beryx.jlink' version '2.24.4'
 }
 
 group 'com.benchmark'
@@ -13,11 +13,11 @@ repositories {
 }
 
 ext {
-    junitVersion = '5.8.1'
+    junitVersion = '5.8.2'
 }
 
-sourceCompatibility = '17'
-targetCompatibility = '17'
+sourceCompatibility = '18'
+targetCompatibility = '18'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -29,17 +29,13 @@ application {
 }
 
 javafx {
-    version = '17.0.1'
+    version = '18.0.1'
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.swing']
 }
 
 dependencies {
     // JavaFX
-    implementation('org.controlsfx:controlsfx:11.1.0')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
-
-    // Filters
-    implementation project('filters')
 
     // JUnit
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
@@ -60,4 +56,10 @@ jlink {
 
 jlinkZip {
     group = 'distribution'
+}
+
+plugins.withType(JavaPlugin).configureEach {
+    java {
+        modularity.inferModulePath = true
+    }
 }

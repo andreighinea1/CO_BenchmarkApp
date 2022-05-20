@@ -3,7 +3,6 @@
 # From https://github.com/github/gitignore/blob/master/Gradle.gitignore
 .gradle
 /build/
-filters/build/
 
 
 # From https://github.com/github/gitignore/blob/master/Java.gitignore
