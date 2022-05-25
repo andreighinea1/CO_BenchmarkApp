@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.benchmark.benchmarkapp.pages.Filters">
+    <children>
+        <SplitPane layoutX="2.0" layoutY="1.0" prefHeight="636.0" prefWidth="876.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="634.0" prefWidth="261.0" style="-fx-background-color: #E9E4D1;">
+               <children>
+                  <Button fx:id="tobenchmark" layoutX="342.0" layoutY="562.0" mnemonicParsing="false" onAction="#toBenchmark" prefHeight="44.0" prefWidth="217.0" style="-fx-background-color: #57433a; -fx-text-fill: #E9E4D1;" text="To the benchmark" textFill="#e9e4d1">
+                     <font>
+                        <Font name="Lucida Calligraphy Italic" size="19.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="imageuploaded" layoutX="125.0" layoutY="77.0" prefHeight="23.0" prefWidth="139.0" style="-fx-text-fill: #57433A;">
+                     <font>
+                        <Font name="Lucida Calligraphy Italic" size="13.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="back" layoutX="34.0" layoutY="562.0" mnemonicParsing="false" onAction="#backToStartPage" prefHeight="44.0" prefWidth="168.0" style="-fx-background-color: #57433a; -fx-text-fill: #E9E4D1;" text="Back" textFill="#e9e4d1">
+                     <font>
+                        <Font name="Lucida Calligraphy Italic" size="19.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="21.0" layoutY="73.0" prefHeight="55.0" prefWidth="92.0" style="-fx-text-fill: #57433A;" text="Before:">
+                     <font>
+                        <Font name="Lucida Calligraphy Italic" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="309.0" layoutY="73.0" prefHeight="55.0" prefWidth="92.0" style="-fx-text-fill: #57433A;" text="After:">
+                     <font>
+                        <Font name="Lucida Calligraphy Italic" size="19.0" />
+                     </font>
+                  </Label>
+                      <AnchorPane layoutX="589.0" minHeight="0.0" minWidth="0.0" prefHeight="651.0" prefWidth="285.0" style="-fx-background-color: #57433A;">
+                     <children>
+                        <Label layoutX="64.0" layoutY="36.0" prefHeight="55.0" prefWidth="157.0" style="-fx-text-fill: #E9E4D1;" text="Choose a filter">
+                           <font>
+                              <Font name="Lucida Calligraphy Italic" size="19.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="grayscaleButton" layoutX="29.0" layoutY="110.0" mnemonicParsing="false" onAction="#grayscale" prefHeight="78.0" prefWidth="92.0" style="-fx-background-color: #e9e4d1;" text="Grayscale">
+                           <font>
+                              <Font name="Lucida Calligraphy Italic" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="thresholdButton" layoutX="168.0" layoutY="110.0" mnemonicParsing="false" onAction="#threshold" prefHeight="78.0" prefWidth="92.0" style="-fx-background-color: #e9e4d1;" text="Threshold">
+                           <font>
+                              <Font name="Lucida Calligraphy Italic" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="exposureButton" layoutX="36.0" layoutY="248.0" mnemonicParsing="false" onAction="#exposure" prefHeight="78.0" prefWidth="92.0" style="-fx-background-color: #e9e4d1;" text="Exposure">
+                           <font>
+                              <Font name="Lucida Calligraphy Italic" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="invertButton" layoutX="168.0" layoutY="248.0" mnemonicParsing="false" onAction="#invert" prefHeight="78.0" prefWidth="92.0" style="-fx-background-color: #e9e4d1;" text="Invert">
+                           <font>
+                              <Font name="Lucida Calligraphy Italic" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="gainButton" layoutX="36.0" layoutY="379.0" mnemonicParsing="false" onAction="#gain" prefHeight="78.0" prefWidth="92.0" style="-fx-background-color: #e9e4d1;" text="Gain">
+                           <font>
+                              <Font name="Lucida Calligraphy Italic" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="contrastButton" layoutX="168.0" layoutY="379.0" mnemonicParsing="false" onAction="#contrast" prefHeight="78.0" prefWidth="92.0" style="-fx-background-color: #e9e4d1;" text="Contrast">
+                           <font>
+                              <Font name="Lucida Calligraphy Italic" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="rescaleButton" layoutX="36.0" layoutY="517.0" mnemonicParsing="false" onAction="#rescale" prefHeight="78.0" prefWidth="92.0" style="-fx-background-color: #e9e4d1;" text="Rescale">
+                           <font>
+                              <Font name="Lucida Calligraphy Italic" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="solarizeButton" layoutX="168.0" layoutY="517.0" mnemonicParsing="false" onAction="#solarize" prefHeight="78.0" prefWidth="92.0" style="-fx-background-color: #e9e4d1;" text="Solarize">
+                           <font>
+                              <Font name="Lucida Calligraphy Italic" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                      </AnchorPane>
+                  <ImageView fx:id="afterImageView" fitHeight="326.0" fitWidth="257.0" layoutX="302.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="beforeImageView" fitHeight="326.0" fitWidth="257.0" layoutX="21.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Img/ImaginePtFiltre1.jpeg" />
+                     </image>
+                  </ImageView>
+               </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

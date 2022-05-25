@@ -38,16 +38,26 @@
                         <Font name="Lucida Calligraphy Italic" size="19.0" />
                      </font>
                   </Button>
-                  <Label layoutX="26.0" layoutY="161.0" prefHeight="313.0" prefWidth="521.0" text="This application generates photos in order to test the CPU performance. The user is able to upload an image, select the resolution , filters and number of images she/he wants to test." textFill="#e9e4d1" wrapText="true">
+                  <Label layoutX="26.0" layoutY="193.0" prefHeight="313.0" prefWidth="521.0" text="This application generates photos in order to test the CPU performance. The user is able to upload an image, select the resolution , filters and number of images she/he wants to test." textFill="#e9e4d1" wrapText="true">
                      <font>
                         <Font name="Lucida Calligraphy Italic" size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="122.0" layoutY="38.0" prefHeight="123.0" prefWidth="330.0" text="Benchmark Purpose" textFill="#e9e4d1" wrapText="true">
+                  <Label layoutX="132.0" layoutY="100.0" prefHeight="123.0" prefWidth="330.0" text="Benchmark Purpose" textFill="#e9e4d1" wrapText="true">
                      <font>
                         <Font name="Lucida Calligraphy Italic" size="30.0" />
                      </font>
                   </Label>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="107.0" layoutY="12.0" prefHeight="67.0" prefWidth="266.0" text="Curious about available filters?" textFill="#e9e4d1" wrapText="true">
+                     <font>
+                        <Font name="Lucida Calligraphy Italic" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="StarDemo" layoutX="378.0" layoutY="23.0" mnemonicParsing="false" onAction="#startDemo" prefHeight="44.0" prefWidth="168.0" style="-fx-background-color: transparent; -fx-border-color: #e9e4d1;" text="Try Demo" textFill="#e9e4d1">
+                     <font>
+                        <Font name="Lucida Calligraphy Italic" size="19.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
         </items>
