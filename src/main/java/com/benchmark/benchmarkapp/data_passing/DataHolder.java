@@ -11,6 +11,7 @@ public final class DataHolder {
     private Resolution resolution;
     private ArrayList<PointFilter> filters = new ArrayList<>();
     private BufferedImage uploadedImage;
+    private int currentProgress;
     private int score;
     private int imageCount;
     private double time;
@@ -55,7 +56,7 @@ public final class DataHolder {
         filters = new ArrayList<>();
         resolution = null;
         uploadedImage = null;
-        time=0;
+        time = 0;
     }
 
     public BufferedImage getUploadedImage() {
@@ -88,5 +89,13 @@ public final class DataHolder {
 
     public double getTime() {
         return time;
+    }
+
+    public int getCurrentProgress() {
+        return currentProgress;
+    }
+
+    public void setCurrentProgress(int currentProgress) {
+        this.currentProgress = currentProgress;
     }
 }

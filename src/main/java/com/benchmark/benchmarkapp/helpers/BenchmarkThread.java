@@ -3,14 +3,15 @@ package com.benchmark.benchmarkapp.helpers;
 import com.benchmark.benchmarkapp.Main;
 import com.benchmark.benchmarkapp.data_passing.DataHolder;
 import com.benchmark.benchmarkapp.data_passing.Resolution;
-import javafx.scene.chart.PieChart;
+import com.benchmark.benchmarkapp.pages.LoadingPageController;
+import javafx.application.Platform;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class BenchmarkThread extends Thread {
     private double startTime;
-    private double endTime;
+    private double totalTime;
     private boolean startedBench = false;
 
     private final DataHolder instance;
@@ -21,16 +22,33 @@ public class BenchmarkThread extends Thread {
         res = instance.getResolution();
     }
 
-    public void startBench() {
-        System.out.println("Bench STARTED");
-        startedBench = true;
-        startTime = System.nanoTime();
+    public void initBench() {
+        System.out.println("Bench INIT");
+        startedBench = false;
+        totalTime = 0;
+    }
+
+    public void pauseBench() {
+        double t = System.nanoTime(); // Paused at the start of the function
+        if (startedBench) {
+            totalTime += t - startTime;
+            startedBench = false;
+        } else {
+            System.out.println("Bench not started!");
+        }
+    }
+
+    public void continueBench() {
+        if (!startedBench) {
+            startedBench = true;
+            startTime = System.nanoTime(); // Continued at the end of the function
+        } else {
+            System.out.println("Bench already started!");
+        }
     }
 
     public void endBench() {
-        double t = System.nanoTime();
         if (startedBench) {
-            endTime = t - startTime;
             startedBench = false;
             System.out.println("Bench DONE");
         } else {
@@ -42,19 +60,32 @@ public class BenchmarkThread extends Thread {
         return (int) ((instance.getImageCount() + 5 * instance.getFilterCount()) / time * res.pixelCount() * 1000000);
     }
 
-    ArrayList<BufferedImage> images = new ArrayList<>();
-
     public void run() {
         int imageCount = instance.getImageCount();
+        LoadingPageController lpcInstance = LoadingPageController.getInstance();
 
-        startBench();
+        // Initialize the bench with the starting values
+        Platform.runLater(() -> lpcInstance.setBenchmarkingLabelCount(0, imageCount));
+        initBench();
         for (int i = 0; i < imageCount; i++) {
-            images.add(instance.useFilters(RandomImage.getRandomImage(res.width(), res.height())));
+            // First generate a random image outside the timer
+            BufferedImage randomImage = RandomImage.getRandomImage(res.width(), res.height());
+            int finalI = i;
+            Platform.runLater(() -> lpcInstance.setBenchmarkingLabelCount(finalI + 1, imageCount));
+
+            // Then continue with the bench
+            continueBench();
+
+            // Use the filters inside the bench
+            instance.useFilters(randomImage);
+
+            // And pause the bench, so that the generation of the random image doesn't affect the image
+            pauseBench();
         }
         endBench();
 
-        DataHolder.getInstance().setTime(endTime);
-        DataHolder.getInstance().setScore(getScore(endTime));
+        DataHolder.getInstance().setTime(totalTime);
+        DataHolder.getInstance().setScore(getScore(totalTime));
 
         Main m = new Main();
         m.changeScene("Page3.fxml");

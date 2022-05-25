@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #E9E4D1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.benchmark.benchmarkapp.pages.LoadingPage">
+<AnchorPane prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #E9E4D1;" xmlns="http://javafx.com/javafx/16"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.benchmark.benchmarkapp.pages.LoadingPageController">
    <children>
       <ImageView fx:id="loadingimg" fitHeight="343.0" fitWidth="335.0" layoutX="283.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Img/loading.gif" />
          </image>
       </ImageView>
-      <Label layoutX="302.0" layoutY="106.0" text="Benchmarking..." textFill="#57433a">
+      <Label fx:id="benchmarkingLabel" layoutX="302.0" layoutY="106.0" text="Benchmarking..." textFill="#57433a">
          <font>
             <Font name="Lucida Calligraphy Italic" size="34.0" />
          </font>

@@ -14,7 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class Page3 {
+public class Page3Controller {
     private DataHolder instance;
 
     @FXML
@@ -31,7 +31,7 @@ public class Page3 {
     @FXML
     private Label timeAndSize;
 
-    public Page3() {
+    public Page3Controller() {
     }
 
     public void initialize() {
