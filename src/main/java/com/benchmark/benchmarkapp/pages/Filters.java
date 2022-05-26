@@ -16,6 +16,7 @@ import javax.xml.crypto.Data;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +64,8 @@ public class Filters {
     private void setFilterImage(PointFilter filter) throws IOException {
         filter = DataHolder.getProcessedFilter(filter);
 
-        BufferedImage bi = ImageIO.read(new File("ImaginePtFiltre1.jpeg"));
+        URL url = getClass().getResource("/com/benchmark/benchmarkapp/Img/ImaginePtFiltre1.jpeg");
+        BufferedImage bi = ImageIO.read(url);
 
         filter.filter(bi, bi);
 
