@@ -7,9 +7,11 @@ import javafx.scene.control.Button;
 
 public class StartPageController {
     @FXML
-    private Button Next;
+    private Button nextButton;
     @FXML
-    private Button Exit;
+    private Button exitButton;
+    @FXML
+    private Button startDemoButton;
 
     public StartPageController() {
     }
@@ -26,4 +28,11 @@ public class StartPageController {
         Main m = new Main();
         m.changeScene("Page2.fxml");
     }
+
+    @FXML
+    public void startDemo() {
+        Main m = new Main();
+        m.changeScene("Filters.fxml");
+    }
+
 }

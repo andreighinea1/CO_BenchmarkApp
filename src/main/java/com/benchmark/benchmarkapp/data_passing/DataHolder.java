@@ -2,15 +2,16 @@ package com.benchmark.benchmarkapp.data_passing;
 
 
 import com.jhlabs.image.*;
+import javafx.event.ActionEvent;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public final class DataHolder {
     private Resolution resolution;
     private ArrayList<PointFilter> filters = new ArrayList<>();
     private BufferedImage uploadedImage;
-    private int currentProgress;
     private int score;
     private int imageCount;
     private double time;
@@ -40,8 +41,27 @@ public final class DataHolder {
         return filters.size();
     }
 
+    public static PointFilter getProcessedFilter(PointFilter filter) {
+        // Added there bc they need to be initialized
+        if (filter instanceof ContrastFilter contrastFilter) {
+            contrastFilter.setContrast(4);
+            contrastFilter.setBrightness(4);
+            return contrastFilter;
+        }
+        if (filter instanceof RescaleFilter rescaleFilter) {
+            rescaleFilter.setScale(4);
+            return rescaleFilter;
+        }
+        if (filter instanceof GainFilter gainFilter) {
+            gainFilter.setGain(2);
+            return gainFilter;
+        }
+
+        return filter;
+    }
+
     public void addFilter(PointFilter filter) {
-        filters.add(filter);
+        filters.add(getProcessedFilter(filter));
     }
 
     public void addAllFilters() {
@@ -102,21 +122,21 @@ public final class DataHolder {
     }
 
     private String getFilterName(PointFilter filter) {
-        if(filter instanceof GrayscaleFilter)
+        if (filter instanceof GrayscaleFilter)
             return "GrayscaleFilter";
-        if(filter instanceof GainFilter)
+        if (filter instanceof GainFilter)
             return "GainFilter";
-        if(filter instanceof ThresholdFilter)
+        if (filter instanceof ThresholdFilter)
             return "ThresholdFilter";
-        if(filter instanceof ContrastFilter)
+        if (filter instanceof ContrastFilter)
             return "ContrastFilter";
-        if(filter instanceof ExposureFilter)
+        if (filter instanceof ExposureFilter)
             return "ExposureFilter";
-        if(filter instanceof RescaleFilter)
+        if (filter instanceof RescaleFilter)
             return "RescaleFilter";
-        if(filter instanceof InvertFilter)
+        if (filter instanceof InvertFilter)
             return "InvertFilter";
-        if(filter instanceof SolarizeFilter)
+        if (filter instanceof SolarizeFilter)
             return "SolarizeFilter";
         return "NOT_FOUND";
     }
@@ -126,14 +146,6 @@ public final class DataHolder {
         for (PointFilter filter : filters)
             res.append(getFilterName(filter)).append(", ");
 
-        return res.substring(0, res.length()-2);
-    }
-
-    public int getCurrentProgress() {
-        return currentProgress;
-    }
-
-    public void setCurrentProgress(int currentProgress) {
-        this.currentProgress = currentProgress;
+        return res.substring(0, res.length() - 2);
     }
 }

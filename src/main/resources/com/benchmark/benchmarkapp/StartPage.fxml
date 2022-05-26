@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?><?import javafx.scene.control.Label?><?import javafx.scene.control.SplitPane?><?import javafx.scene.image.Image?><?import javafx.scene.image.ImageView?><?import javafx.scene.layout.AnchorPane?><?import javafx.scene.text.Font?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0"
     prefWidth="876.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
     fx:controller="com.benchmark.benchmarkapp.pages.StartPageController">
@@ -29,33 +30,48 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="634.0" prefWidth="551.0"
                     style="-fx-background-color: #57433A;">
                     <children>
-                        <Button fx:id="Next" layoutX="378.0" layoutY="576.0" mnemonicParsing="false"
+                        <Button fx:id="nextButton" layoutX="378.0" layoutY="576.0" mnemonicParsing="false"
                             onAction="#pressNext1" prefHeight="44.0" prefWidth="168.0"
                             style="-fx-background-color: #E9E4D1;" text="Next" textFill="#57433a">
                             <font>
                                 <Font name="Lucida Calligraphy Italic" size="19.0" />
                             </font>
                         </Button>
-                        <Button fx:id="Exit" layoutX="23.0" layoutY="576.0" mnemonicParsing="false"
+                        <Button fx:id="exitButton" layoutX="23.0" layoutY="576.0" mnemonicParsing="false"
                             onAction="#exitApplication" prefHeight="44.0" prefWidth="168.0"
                             style="-fx-background-color: #E9E4D1;" text="Exit" textFill="#57433a">
                             <font>
                                 <Font name="Lucida Calligraphy Italic" size="19.0" />
                             </font>
                         </Button>
-                        <Label layoutX="26.0" layoutY="161.0" prefHeight="313.0" prefWidth="521.0"
+                        <Label layoutX="26.0" layoutY="193.0" prefHeight="313.0" prefWidth="521.0"
                             text="This application generates photos in order to test the CPU performance. The user is able to upload an image, select the resolution , filters and number of images she/he wants to test."
                             textFill="#e9e4d1" wrapText="true">
                             <font>
                                 <Font name="Lucida Calligraphy Italic" size="25.0" />
                             </font>
                         </Label>
-                        <Label layoutX="122.0" layoutY="38.0" prefHeight="123.0" prefWidth="330.0"
+                        <Label layoutX="132.0" layoutY="100.0" prefHeight="123.0" prefWidth="330.0"
                             text="Benchmark Purpose" textFill="#e9e4d1" wrapText="true">
                             <font>
                                 <Font name="Lucida Calligraphy Italic" size="30.0" />
                             </font>
                         </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="107.0" layoutY="12.0"
+                            prefHeight="67.0" prefWidth="266.0" text="Curious about available filters?"
+                            textFill="#e9e4d1" wrapText="true">
+                            <font>
+                                <Font name="Lucida Calligraphy Italic" size="15.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="startDemoButton" layoutX="378.0" layoutY="23.0" mnemonicParsing="false"
+                            onAction="#startDemo" prefHeight="44.0" prefWidth="168.0"
+                            style="-fx-background-color: transparent; -fx-border-color: #e9e4d1;" text="Try Demo"
+                            textFill="#e9e4d1">
+                            <font>
+                                <Font name="Lucida Calligraphy Italic" size="19.0" />
+                            </font>
+                        </Button>
                     </children>
                 </AnchorPane>
             </items>
