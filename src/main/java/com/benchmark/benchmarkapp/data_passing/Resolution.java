@@ -39,9 +39,7 @@ public final class Resolution {
 
     @Override
     public String toString() {
-        return "Resolution[" +
-                "width=" + width + ", " +
-                "height=" + height + ']';
+        return width + "x" + height;
     }
 
 }

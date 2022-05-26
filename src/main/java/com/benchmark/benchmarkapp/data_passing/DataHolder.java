@@ -2,7 +2,6 @@ package com.benchmark.benchmarkapp.data_passing;
 
 
 import com.jhlabs.image.*;
-import javafx.scene.image.Image;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -43,6 +42,17 @@ public final class DataHolder {
 
     public void addFilter(PointFilter filter) {
         filters.add(filter);
+    }
+
+    public void addAllFilters() {
+        addFilter(new GrayscaleFilter());
+        addFilter(new GainFilter());
+        addFilter(new ThresholdFilter());
+        addFilter(new ContrastFilter());
+        addFilter(new ExposureFilter());
+        addFilter(new RescaleFilter());
+        addFilter(new InvertFilter());
+        addFilter(new SolarizeFilter());
     }
 
     public BufferedImage useFilters(BufferedImage img) {
@@ -89,6 +99,34 @@ public final class DataHolder {
 
     public double getTime() {
         return time;
+    }
+
+    private String getFilterName(PointFilter filter) {
+        if(filter instanceof GrayscaleFilter)
+            return "GrayscaleFilter";
+        if(filter instanceof GainFilter)
+            return "GainFilter";
+        if(filter instanceof ThresholdFilter)
+            return "ThresholdFilter";
+        if(filter instanceof ContrastFilter)
+            return "ContrastFilter";
+        if(filter instanceof ExposureFilter)
+            return "ExposureFilter";
+        if(filter instanceof RescaleFilter)
+            return "RescaleFilter";
+        if(filter instanceof InvertFilter)
+            return "InvertFilter";
+        if(filter instanceof SolarizeFilter)
+            return "SolarizeFilter";
+        return "NOT_FOUND";
+    }
+
+    public String getFiltersString() {
+        StringBuilder res = new StringBuilder();
+        for (PointFilter filter : filters)
+            res.append(getFilterName(filter)).append(", ");
+
+        return res.substring(0, res.length()-2);
     }
 
     public int getCurrentProgress() {

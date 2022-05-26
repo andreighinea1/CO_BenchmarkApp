@@ -38,14 +38,12 @@ public class Page3Controller {
         instance = DataHolder.getInstance();
 
         scoreText.setText("The score is: " + instance.getScore());
-        timeAndSize.setText(String.valueOf(instance.getImageCount()) + " images were processed in " + instance.getTime()/1000000000 + " seconds");
+        timeAndSize.setText(instance.getImageCount() + " images were processed in " + instance.getTime() / 1000000000 + " seconds");
 
-//        Resolution res = instance.getResolution();
-//        BufferedImage img = getRandomImage(res.width(), res.height());
         BufferedImage img = instance.getUploadedImage();
 
 
-        if(img != null) {
+        if (img != null) {
             setImage1(SwingFXUtils.toFXImage(img, null));
             setImage2(SwingFXUtils.toFXImage(instance.useFilters(img), null));
         }
