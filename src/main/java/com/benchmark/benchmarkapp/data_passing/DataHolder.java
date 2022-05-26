@@ -1,11 +1,10 @@
 package com.benchmark.benchmarkapp.data_passing;
 
 
+import com.benchmark.benchmarkapp.helpers.BenchmarkThread;
 import com.jhlabs.image.*;
-import javafx.event.ActionEvent;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public final class DataHolder {
@@ -73,6 +72,43 @@ public final class DataHolder {
         addFilter(new RescaleFilter());
         addFilter(new InvertFilter());
         addFilter(new SolarizeFilter());
+    }
+
+    private double getDivisionFactor(PointFilter filter) {
+        // These are based on the results from the tests ran
+        if (filter instanceof GrayscaleFilter)
+            return 1.293;
+        if (filter instanceof GainFilter)
+            return 1.533;
+        if (filter instanceof ThresholdFilter)
+            return 5.234;
+        if (filter instanceof ContrastFilter)
+            return 1.54;
+        if (filter instanceof ExposureFilter)
+            return 1.528;
+        if (filter instanceof RescaleFilter)
+            return 1.505;
+        if (filter instanceof InvertFilter)
+            return 0.98;
+        if (filter instanceof SolarizeFilter)
+            return 1.525;
+        return 1;
+    }
+
+    public void useFilters(BufferedImage img, BenchmarkThread instance) {
+        for (var filter : filters) {
+            BenchmarkThread.setDivisionFactor(getDivisionFactor(filter));
+
+            // Then continue with the bench
+            instance.continueBench();
+
+            // And apply the filter
+            filter.filter(img, img);
+
+            // And pause the bench, so that the generation of
+            // the random image doesn't affect the benchmark
+            instance.pauseBench();
+        }
     }
 
     public BufferedImage useFilters(BufferedImage img) {

@@ -1,0 +1,1 @@
+clear && java -jar TEST.jar && pause

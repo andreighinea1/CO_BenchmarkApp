@@ -12,6 +12,8 @@ public class RunPredefinedTests {
     public static void main(String[] args) {
         instance = DataHolder.getInstance();
 
+        System.out.println("Running updated benchmark - v3");
+
         startTest1();
         startTest2();
         startTest3();
@@ -26,6 +28,8 @@ public class RunPredefinedTests {
         startTest12();
         startTest13();
         startTest14();
+        startTest15();
+//        startTest16();
     }
 
     private static void startTest1(){
@@ -167,6 +171,26 @@ public class RunPredefinedTests {
 
         startBench();
     }
+
+    private static void startTest15(){
+        instance.resetData();
+
+        instance.setResolution("512x512");
+        instance.addFilter(new InvertFilter());
+        instance.setImageCount(100);
+
+        startBench();
+    }
+
+//    private static void startTest16(){
+//        instance.resetData();
+//
+//        instance.setResolution("8192x8192");
+//        instance.addAllFilters();
+//        instance.setImageCount(50);
+//
+//        startBench();
+//    }
 
     private static void startBench(){
         BenchmarkThreadTEST benchmarkThread = new BenchmarkThreadTEST();

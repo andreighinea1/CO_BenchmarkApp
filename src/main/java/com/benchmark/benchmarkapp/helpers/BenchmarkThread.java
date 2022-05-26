@@ -10,11 +10,13 @@ import java.awt.image.BufferedImage;
 
 public class BenchmarkThread extends Thread {
     double startTime;
-    double totalTime;
+    double totalScoreTime;
+    double totalActualTime;
     boolean startedBench = false;
 
     final DataHolder instance;
     final Resolution res;
+    static double divisionFactor;
 
     public BenchmarkThread() {
         instance = DataHolder.getInstance();
@@ -25,7 +27,9 @@ public class BenchmarkThread extends Thread {
         System.out.printf("Bench INIT with: %s, (%s), %s%n", res,
                 instance.getFiltersString(), instance.getImageCount());
         startedBench = false;
-        totalTime = 0;
+        totalScoreTime = 0;
+        totalActualTime = 0;
+        divisionFactor = 1;
     }
 
     public void continueBench() {
@@ -40,7 +44,8 @@ public class BenchmarkThread extends Thread {
     public void pauseBench() {
         double t = System.nanoTime(); // Paused at the start of the function
         if (startedBench) {
-            totalTime += t - startTime;
+            totalActualTime = t - startTime;
+            totalScoreTime += totalActualTime / divisionFactor;
             startedBench = false;
         } else {
             System.out.println("Bench not started!");
@@ -49,11 +54,11 @@ public class BenchmarkThread extends Thread {
 
     public void endBench() {
         startedBench = false;
-        int score = getScore(totalTime);
+        int score = getScore(totalScoreTime);
         System.out.printf("Bench DONE in %.3f seconds with score: %s%n",
-                totalTime / 1000000000, score);
+                totalActualTime / 1000000000, score);
 
-        DataHolder.getInstance().setTime(totalTime);
+        DataHolder.getInstance().setTime(totalActualTime);
         DataHolder.getInstance().setScore(score);
     }
 
@@ -77,14 +82,8 @@ public class BenchmarkThread extends Thread {
             // First generate a random image outside the timer
             BufferedImage randomImage = RandomImage.getRandomImage(res.width(), res.height());
 
-            // Then continue with the bench
-            continueBench();
-
             // Use the filters inside the bench
-            instance.useFilters(randomImage);
-
-            // And pause the bench, so that the generation of the random image doesn't affect the benchmark
-            pauseBench();
+            instance.useFilters(randomImage, this);
 
             // Update label
             int finalI = i;
@@ -95,5 +94,9 @@ public class BenchmarkThread extends Thread {
         // Go to the results page
         Main m = new Main();
         m.changeScene("Page3.fxml");
+    }
+
+    public static void setDivisionFactor(double divisionFactor) {
+        BenchmarkThread.divisionFactor = divisionFactor;
     }
 }
