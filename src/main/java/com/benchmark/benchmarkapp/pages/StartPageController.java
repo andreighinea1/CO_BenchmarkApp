@@ -2,21 +2,18 @@ package com.benchmark.benchmarkapp.pages;
 
 import com.benchmark.benchmarkapp.Main;
 import com.benchmark.benchmarkapp.data_passing.DataHolder;
-import com.benchmark.benchmarkapp.data_passing.Resolution;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-public class StartPage {
+public class StartPageController {
     @FXML
-    private Button Next;
+    private Button nextButton;
     @FXML
-    private Button Exit;
+    private Button exitButton;
+    @FXML
+    private Button startDemoButton;
 
-    public StartPage() {
+    public StartPageController() {
     }
 
     public void initialize() {
@@ -31,4 +28,11 @@ public class StartPage {
         Main m = new Main();
         m.changeScene("Page2.fxml");
     }
+
+    @FXML
+    public void startDemo() {
+        Main m = new Main();
+        m.changeScene("Filters.fxml");
+    }
+
 }

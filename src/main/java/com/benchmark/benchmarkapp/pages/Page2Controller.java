@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Page2 {
+public class Page2Controller {
     private DataHolder instance;
 
     List<String> firstFile;
@@ -66,7 +66,7 @@ public class Page2 {
     @FXML
     private Label wrongInput;
 
-    public Page2() {
+    public Page2Controller() {
     }
 
     public void initialize() {
